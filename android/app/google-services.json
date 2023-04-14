@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "117230249924",
+    "project_id": "fs-josh",
+    "storage_bucket": "fs-josh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117230249924:android:ce7421ae143bf7ad22e691",
+        "android_client_info": {
+          "package_name": "com.fundingsocietiesproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117230249924-07i18e36arl45shl9t3lkidlh25q4e6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPPuQZ4pyODllNuYUx6zcWtHIdwOMFM1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117230249924-07i18e36arl45shl9t3lkidlh25q4e6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
