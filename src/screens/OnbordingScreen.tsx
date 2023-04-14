@@ -106,6 +106,7 @@ const OnboardingScreen = ({navigation, route}: PropsType) => {
 };
 
 export default OnboardingScreen;
+//new comment
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: '#171f46'},
