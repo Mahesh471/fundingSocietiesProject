@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {LoanCardPropType} from '../screens/CrowdfundingScreen';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import LoanCardField from './LoanCardField';
 import BlueButton from './BlueButton';
 import {styles} from '../styles/ComponentStyle';
+import {LoginContext} from './Main';
 
 interface PropsType {
   item: LoanCardPropType;
@@ -24,7 +25,15 @@ const convertNumToString = (num: number) => {
   return res;
 };
 
+const compareDate = (endDate: string) => {
+  const currDate = new Date();
+  const lastDate = new Date(endDate);
+  return lastDate > currDate;
+};
+
 const LoanCard = (props: PropsType) => {
+  const {userInfo, setUserInfo, loggedIn, setLoggedIn} =
+    useContext(LoginContext);
   return (
     <View style={styles.LoanCard.container}>
       <View style={styles.LoanCard.titleView}>
@@ -91,12 +100,21 @@ const LoanCard = (props: PropsType) => {
             needBorder={true}
             needBitcoin={true}
           />
-          <LoanCardField
-            title="Max."
-            value={convertNumToString(props.item.maxInvestment)}
-            needBorder={true}
-            needBitcoin={true}
-          />
+          {userInfo.investorType === 'Retail' ? (
+            <LoanCardField
+              title="Max."
+              value={convertNumToString(props.item.maxInvestment)}
+              needBorder={true}
+              needBitcoin={true}
+            />
+          ) : (
+            <LoanCardField
+              title=""
+              value=""
+              needBorder={false}
+              needBitcoin={false}
+            />
+          )}
         </View>
       </View>
       <View style={styles.LoanCard.factSheetView}>
@@ -104,7 +122,7 @@ const LoanCard = (props: PropsType) => {
           <Text style={styles.LoanCard.factSheetText}>View Factsheet</Text>
         </TouchableOpacity>
       </View>
-      <BlueButton isDisabled={true} fullWidth={true}>
+      <BlueButton isDisabled={compareDate(props.item.endDate)} fullWidth={true}>
         Lend
       </BlueButton>
     </View>

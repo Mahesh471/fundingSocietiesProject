@@ -16,8 +16,8 @@ import {RootStackParamList} from '../navigation/StackNavigator';
 import Data from '../assets/data/settingScreenData';
 import {styles} from '../styles/ScreenStyle';
 import ProfileCard from '../components/ProfileCard';
-import {GoogleSignin, User} from '@react-native-google-signin/google-signin';
-import {LoginContext} from '../components/Main';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {LoginContext, UserType} from '../components/Main';
 import ActivityLoader from '../components/ActivityLoader';
 
 type PropsType = NativeStackScreenProps<RootStackParamList>;
@@ -45,7 +45,7 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
       setLoggedIn(false);
-      setUserInfo({} as User);
+      setUserInfo({} as UserType);
     } catch (error) {
       console.error(error);
     }

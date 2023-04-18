@@ -15,6 +15,7 @@ interface LoanCardPropType {
   maxInvestment: number;
   minInvestment: number;
   type: string;
+  endDate: string;
 }
 
 const CrowdfundingScreen = () => {
