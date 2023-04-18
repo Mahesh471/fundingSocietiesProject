@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -26,7 +25,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {LoginContext} from '../components/Main';
-import {getLoanData, setUser, updateUser} from '../firebase/database';
+import {getLoanData, setUser} from '../firebase/database';
 
 GoogleSignin.configure({
   webClientId:
@@ -104,7 +103,6 @@ const LoginScreen = ({navigation, route}: PropsType) => {
       };
       console.log('here');
       setUser(key, userData);
-      getLoanData();
     }
   }, [userInfo, loggedIn]);
 

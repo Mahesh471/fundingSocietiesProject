@@ -283,4 +283,79 @@ export const styles = {
       fontSize: 12,
     },
   }),
+  LoanCard: StyleSheet.create({
+    container: {
+      backgroundColor: 'rgba(255,255,255,0.2)',
+      marginBottom: '5%',
+      borderRadius: 5,
+    },
+    titleView: {
+      width: '100%',
+      paddingLeft: '5%',
+      paddingRight: '4%',
+      paddingVertical: '3%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    titleLeftColumn: {
+      flexDirection: 'column',
+    },
+    titleRightRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    greyTextStyle: {
+      color: '#C3C3BB',
+      fontSize: 11,
+    },
+    whiteSmallTextStyle: {
+      color: 'white',
+      fontSize: 11,
+    },
+    whiteMediumTextStyle: {
+      color: 'white',
+      fontSize: 13,
+    },
+    bodyView: {
+      borderBottomColor: '#C3C3BB',
+      borderBottomWidth: 0.5,
+    },
+    twoFieldsRowView: {
+      flexDirection: 'row',
+    },
+    factSheetView: {
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingVertical: '4%',
+    },
+    factSheetText: {
+      color: 'white',
+      fontSize: 14,
+      fontWeight: '500',
+    },
+  }),
+  LoanCardField: StyleSheet.create({
+    fieldView: {
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginHorizontal: '5%',
+      marginVertical: '2%',
+      paddingVertical: '3%',
+    },
+    valueView: {
+      flexDirection: 'row',
+      alignItems: 'center'
+    },  
+    whiteMediumTextStyle: {
+      color: 'white',
+      fontSize: 13,
+    },
+    greyMediumTextStyle: {
+      color: '#C3C3BB',
+      fontSize: 13,
+    },
+  })
 };

@@ -12,6 +12,8 @@ interface PropsType {
   isConfirmPasswordFieldCorrect?: boolean;
   isCountryScreen?: boolean;
   isRegister?: boolean;
+  fullWidth?: boolean;
+  isDisabled?: boolean;
 }
 const BlueButton = (props: PropsType) => {
   let emailFieldNotProvided = true;
@@ -34,6 +36,7 @@ const BlueButton = (props: PropsType) => {
   return (
     <>
       <TouchableOpacity
+        disabled={props.isDisabled}
         activeOpacity={
           emailFieldNotProvided &&
           passwordFieldNotProvided &&
@@ -50,6 +53,19 @@ const BlueButton = (props: PropsType) => {
           countryNotProvided
             ? {backgroundColor: BUTTON.PRIMARY.BG}
             : {backgroundColor: BUTTON.DISABLED.BG},
+          props.isDisabled
+            ? {
+                backgroundColor: BUTTON.DISABLED.BG,
+              }
+            : {backgroundColor: BUTTON.PRIMARY.BG},
+          props.fullWidth && {
+            width: '100%',
+            borderRadius: 0,
+            marginTop: 0,
+            marginBottom: 0,
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+          },
         ]}
         onPress={props.onPress}>
         <Text
@@ -61,6 +77,11 @@ const BlueButton = (props: PropsType) => {
             countryNotProvided
               ? {color: BUTTON.PRIMARY.TEXT}
               : {color: BUTTON.DISABLED.TEXT},
+            props.isDisabled
+              ? {
+                  color: BUTTON.DISABLED.TEXT,
+                }
+              : {color: BUTTON.PRIMARY.TEXT},
           ]}>
           {props.children}
         </Text>
