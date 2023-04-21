@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 export const styles = {
   BlueButton: StyleSheet.create({
@@ -6,7 +6,7 @@ export const styles = {
       backgroundColor: '#0096FF',
       alignItems: 'center',
       justifyContent: 'center',
-      height: 35,
+      height: Dimensions.get('window').height>600?45:35,
       width: '90%',
       borderRadius: 5,
       marginTop: '2%',

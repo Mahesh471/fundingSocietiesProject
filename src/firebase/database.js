@@ -12,6 +12,5 @@ export const updateUser = (key, userData) => {
 
 export const getLoanData = async (setLoanData) => {
     const snapshot = await db.ref('/loan').once('value');
-    console.log(snapshot.val());
     setLoanData(snapshot.val());
 }

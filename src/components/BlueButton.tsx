@@ -1,8 +1,8 @@
 import React from 'react';
 import {GestureResponderEvent, Text, TouchableOpacity} from 'react-native';
 
-import {BUTTON} from '../assets/constants/colorCodes';
 import {styles} from '../styles/ComponentStyle';
+import {getButtonColor, getTextColor} from '../assets/utilities/utility';
 
 interface PropsType {
   children: React.ReactNode;
@@ -51,13 +51,13 @@ const BlueButton = (props: PropsType) => {
           passwordFieldNotProvided &&
           confirmPasswordFieldNotProvided &&
           countryNotProvided
-            ? {backgroundColor: BUTTON.PRIMARY.BG}
-            : {backgroundColor: BUTTON.DISABLED.BG},
+            ? {backgroundColor: getButtonColor(true)}
+            : {backgroundColor: getButtonColor(false)},
           props.isDisabled
             ? {
-                backgroundColor: BUTTON.DISABLED.BG,
+                backgroundColor: getButtonColor(false),
               }
-            : {backgroundColor: BUTTON.PRIMARY.BG},
+            : {backgroundColor: getButtonColor(true)},
           props.fullWidth && {
             width: '100%',
             borderRadius: 0,
@@ -75,13 +75,13 @@ const BlueButton = (props: PropsType) => {
             passwordFieldNotProvided &&
             confirmPasswordFieldNotProvided &&
             countryNotProvided
-              ? {color: BUTTON.PRIMARY.TEXT}
-              : {color: BUTTON.DISABLED.TEXT},
+              ? {color: getTextColor(true)}
+              : {color: getTextColor(false)},
             props.isDisabled
               ? {
-                  color: BUTTON.DISABLED.TEXT,
+                  color: getTextColor(false),
                 }
-              : {color: BUTTON.PRIMARY.TEXT},
+              : {color: getTextColor(true)},
           ]}>
           {props.children}
         </Text>

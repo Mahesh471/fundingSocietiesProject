@@ -1,9 +1,10 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {LoanCardPropType} from '../screens/CrowdfundingScreen';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import LoanCardField from './LoanCardField';
 import BlueButton from './BlueButton';
+
 import {styles} from '../styles/ComponentStyle';
 import {LoginContext} from './Main';
 
@@ -11,7 +12,7 @@ interface PropsType {
   item: LoanCardPropType;
 }
 
-const convertNumToString = (num: number) => {
+const convertNumToKAbbreviation = (num: number) => {
   let res = '';
   if (num >= 1000) {
     res += JSON.stringify(num / 1000);
@@ -68,13 +69,13 @@ const LoanCard = (props: PropsType) => {
         <View style={styles.LoanCard.twoFieldsRowView}>
           <LoanCardField
             title="Funded"
-            value={convertNumToString(props.item.funded)}
+            value={convertNumToKAbbreviation(props.item.funded)}
             needBorder={true}
             needBitcoin={true}
           />
           <LoanCardField
             title="Goal"
-            value={convertNumToString(props.item.goal)}
+            value={convertNumToKAbbreviation(props.item.goal)}
             needBorder={true}
             needBitcoin={true}
           />
@@ -96,14 +97,14 @@ const LoanCard = (props: PropsType) => {
         <View style={styles.LoanCard.twoFieldsRowView}>
           <LoanCardField
             title="Min."
-            value={convertNumToString(props.item.minInvestment)}
+            value={convertNumToKAbbreviation(props.item.minInvestment)}
             needBorder={true}
             needBitcoin={true}
           />
           {userInfo.investorType === 'Retail' ? (
             <LoanCardField
               title="Max."
-              value={convertNumToString(props.item.maxInvestment)}
+              value={convertNumToKAbbreviation(props.item.maxInvestment)}
               needBorder={true}
               needBitcoin={true}
             />
