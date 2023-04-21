@@ -16,8 +16,6 @@ export const Data = [
         user: 'RFID SG OP',
         money: '10,000.00',
         status: 'Paid',
-        // date: '1 Apr 2023',
-        // month: 'Apr',
         date: '2023-04-01'
     },
     {
@@ -25,8 +23,6 @@ export const Data = [
         user: 'Sang Weng',
         money: '10,0000.00',
         status: 'In Progress',
-        // date: '15 Mar 2023',
-        // month: 'Mar',
         date: '2023-03-15'
     },
     {
@@ -34,22 +30,8 @@ export const Data = [
         user: 'Tom yum goong',
         money: '10,000.00',
         status: 'Partial',
-        // date: '19 Jan 2023',
-        // month: 'Jan',
         date: '2023-01-19',
     },
-    // {
-    //     id: 'TBPT-23030065',
-    //     user: 'Edgard',
-    //     money: '10,000.00',
-    //     status: 'Approved'
-    // },
-    // {
-    //     id: 'TBPT-22065002',
-    //     user: 'Edgard',
-    //     money: '5,000.00',
-    //     status: 'Approved'
-    // },
     {
         id: 'TBPT-13030065',
         user: 'Edgard',

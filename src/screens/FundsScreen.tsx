@@ -2,44 +2,37 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 
 import FlatListItem from '../components/FlatListItem';
-import HeaderTabItem from '../components/HeaderTabItem';
+import {getFundsData} from '../firebase/database';
+import ActivityLoader from '../components/ActivityLoader';
 
-import {data as paymentData} from '../assets/data/paymentData';
-import {data as repaymentData} from '../assets/data/repaymentData';
+export interface FundsItemType {
+  amount: number;
+  date: string;
+  status: string;
+  transaction: string;
+}
 
 const FundsScreen = () => {
-  const [isPaymentSelected, setIsPaymentSelected] = useState<boolean>(true);
-  const [isRepaymentSelected, setIsRepaymentSelected] =
-    useState<boolean>(false);
-  const [DATA, setDATA] = useState(paymentData);
-
+  const [DATA, setDATA] = useState<Array<FundsItemType>>([]);
+  const [loader, setLoader] = useState<boolean>(true);
+  const loadingFundsData = async () => {
+    await getFundsData(setDATA);
+    setLoader(false);
+  };
   useEffect(() => {
-    isPaymentSelected ? setDATA(paymentData) : setDATA(repaymentData);
-  }, [isPaymentSelected]);
+    loadingFundsData();
+  }, []);
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerTabView}>
-        <HeaderTabItem
-          isSelected={isPaymentSelected}
-          setIsSelected={setIsPaymentSelected}
-          setIsOtherSelected={setIsRepaymentSelected}>
-          Payment
-        </HeaderTabItem>
-        <HeaderTabItem
-          isSelected={isRepaymentSelected}
-          setIsSelected={setIsRepaymentSelected}
-          setIsOtherSelected={setIsPaymentSelected}>
-          Repayment
-        </HeaderTabItem>
-      </View>
+      {loader && <ActivityLoader />}
       <View style={styles.flatListView}>
         <FlatList
           data={DATA}
           renderItem={({item}) => {
-            return <FlatListItem {...item} />;
+            return <FlatListItem item={item} />;
           }}
-          keyExtractor={item => item.id}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     </View>

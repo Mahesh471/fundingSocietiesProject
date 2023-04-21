@@ -102,7 +102,6 @@ const LoginScreen = ({navigation, route}: PropsType) => {
         photo: userInfo.user.photo,
         investorType: userInfo.investorType,
       };
-      console.log('here');
       setUser(key, userData);
     }
   }, [userInfo, loggedIn]);
@@ -110,7 +109,6 @@ const LoginScreen = ({navigation, route}: PropsType) => {
   useEffect(() => {
     if (loggedIn) {
       navigation.navigate('MyTab');
-      console.log(JSON.stringify(userInfo));
     }
   }, [loggedIn]);
 
