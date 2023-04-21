@@ -26,7 +26,7 @@ const TabBarIcon = (props: PropsType) => {
     ) : (
       <MaterialIcon name="table-chart" size={25} color={TABBARICON.UNFOCUSED} />
     );
-  } else if (route.name === 'DummyScreen3') {
+  } else if (route.name === 'CrowdfundingScreen') {
     return focused ? (
       <MaterialIcon name="insert-chart" size={27} color={TABBARICON.FOCUSED} />
     ) : (

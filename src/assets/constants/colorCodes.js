@@ -20,4 +20,7 @@ const BUTTON = {
     FOCUSED: 'white',
     UNFOCUSED: '#C3C3BB'
   }
-  export {BUTTON, TABBARICON};
+  const SCREEN = {
+    BGCOLOR: '#00264D'
+  }
+  export {BUTTON, TABBARICON, SCREEN};

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -26,7 +25,7 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {LoginContext} from '../components/Main';
-import {getLoanData, setUser, updateUser} from '../firebase/database';
+import {setUser} from '../firebase/database';
 
 GoogleSignin.configure({
   webClientId:
@@ -81,7 +80,7 @@ const LoginScreen = ({navigation, route}: PropsType) => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      setUserInfo(userInfo);
+      setUserInfo({...userInfo, investorType: 'Retail'}); //'Qualified'
       setLoggedIn(true);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -101,10 +100,10 @@ const LoginScreen = ({navigation, route}: PropsType) => {
         email: userInfo.user.email,
         name: userInfo.user.name,
         photo: userInfo.user.photo,
+        investorType: userInfo.investorType,
       };
       console.log('here');
       setUser(key, userData);
-      getLoanData();
     }
   }, [userInfo, loggedIn]);
 
