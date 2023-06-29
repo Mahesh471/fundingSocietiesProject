@@ -4,15 +4,15 @@ const Data = [
       data: [
         {
           id: '0',
-          title: 'FAQ',
-          text: "Maybe we've already answered your question.Read our FAQs!",
+          title: 'Terms of Use',
+          text: "The Terms of Use stated herein constitute a legal agreement between you and Funding Societies Pte Ltd.",
           img: require('../images/question.png'),
           border: false,
         },
         {
           id: '1',
-          title: 'Live Chat',
-          text: 'Get help from our awesome Customer Support team to resolve your queries instantly.',
+          title: 'Privacy Notice',
+          text: 'At Funding Societies, we respect your personal data and we strive to ensure that your personal data is protected.',
           img: require('../images/question.png'),
           border: true,
         },

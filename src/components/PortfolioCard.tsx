@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
+import {extractMonth, dateConverter} from '../assets/utilities/utility';
 import {styles} from '../styles/ComponentStyle';
 
 interface PropsType {
@@ -14,31 +15,6 @@ interface PropsType {
     date?: string;
   };
 }
-
-const extractMonth = (date: string) => {
-  const splitDate = date.split('-');
-  const monthInteger = splitDate[1];
-  const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  return months[parseInt(monthInteger) - 1];
-};
-const dateConverter = (date: string) => {
-  return (
-    date.substring(8) + ' ' + extractMonth(date) + ' ' + date.substring(0, 4)
-  );
-};
 
 const PortfolioCard = (props: PropsType) => {
   const {item} = props;
