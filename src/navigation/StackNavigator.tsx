@@ -12,6 +12,7 @@ import TabNavigator from './TabNavigator';
 import ReferScreen from '../screens/ReferScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import OnboardingScreen from '../screens/OnbordingScreen';
+import WebViewScreen from '../screens/WebViewScreen';
 
 type RootStackParamList = {
   HomeScreen: undefined;
@@ -30,6 +31,10 @@ type RootStackParamList = {
     setUserEmail: Dispatch<SetStateAction<string>>;
     userDob: string | undefined;
     setUserDob: Dispatch<SetStateAction<string | undefined>>;
+  };
+  WebViewScreen: {
+    url: string;
+    title: string;
   };
   MyTab:
     | undefined
@@ -113,6 +118,17 @@ const StackNavigator = () => {
         options={{
           headerShown: true,
           title: 'Profile',
+          headerTintColor: 'white',
+          headerStyle: {backgroundColor: '#00264D'},
+          statusBarColor: '#00264D',
+        }}
+      />
+      <Stack.Screen
+        name="WebViewScreen"
+        component={WebViewScreen}
+        options={{
+          headerShown: true,
+          title: '',
           headerTintColor: 'white',
           headerStyle: {backgroundColor: '#00264D'},
           statusBarColor: '#00264D',

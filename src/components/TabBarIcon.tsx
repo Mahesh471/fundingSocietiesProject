@@ -14,7 +14,7 @@ interface PropsType {
 
 const TabBarIcon = (props: PropsType) => {
   const {focused, route} = props;
-  if (route.name === 'DummyScreen1') {
+  if (route.name === 'AboutScreen') {
     return focused ? (
       <FontAwesomeIcon name="user" size={25} color={TABBARICON.FOCUSED} />
     ) : (
