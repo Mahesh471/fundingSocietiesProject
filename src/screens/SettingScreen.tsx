@@ -30,15 +30,8 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
   );
   const [loader, setLodaer] = useState<boolean>(false);
 
-  // const [loggedIn, setLoggedIn] = useState<boolean>(true);
-  // const [userInfo, setUserInfo] = useState<User>();
-
   const {userInfo, setUserInfo, loggedIn, setLoggedIn} =
     useContext(LoginContext);
-
-  useEffect(() => {
-    console.log(loggedIn);
-  }, []);
 
   const googleSignOut = async () => {
     try {
@@ -51,29 +44,25 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
     }
   };
   const handleLogoutPress = () => {
-    Alert.alert('Logout', 'Press ok to logout', [
+    Alert.alert('Logout', 'Do you want to logout?', [
       {
         text: 'Cancel',
         onPress: () => null,
         style: 'cancel',
       },
       {
-        text: 'ok',
+        text: 'OK',
         onPress: async () => {
           setLodaer(true);
           await googleSignOut();
           setLodaer(false);
+          navigation.navigate('WelcomeScreen');
         },
         style: 'default',
       },
     ]);
   };
 
-  useEffect(() => {
-    if (!loggedIn) {
-      navigation.navigate('WelcomeScreen');
-    }
-  }, [loggedIn]);
   const handleReferFriendsPress = () => {
     navigation.navigate('ReferScreen');
   };
@@ -87,13 +76,6 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
       setUserDob: setDob,
     });
   };
-
-  // useEffect(()=> {
-  //   if(route.params&&route.params.fileResponse)
-  //   setUserImage(route.params.fileResponse);
-  //   if(route.params&&route.params.dob)
-  //   setDob(dob);
-  // },[]);
 
   return (
     <View style={styles.SettingScreen.container}>
