@@ -24,6 +24,7 @@ const SelectCountryScreen = ({navigation, route}: PropsType) => {
   ]);
 
   const handleSignInPress = () => {
+    console.log(JSON.stringify(selectCountry));
     if (
       selectCountry[0] ||
       selectCountry[1] ||

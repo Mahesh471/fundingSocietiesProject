@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {RefreshControl, ScrollView, Text, View} from 'react-native';
 import LoanCard from '../components/LoanCard';
-import {getLoanData} from '../firebase/database';
+import {getLoanData} from '../services/database';
 import ActivityLoader from '../components/ActivityLoader';
 import {styles} from '../styles/ScreenStyle';
 

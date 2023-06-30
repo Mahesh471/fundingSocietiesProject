@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, Text, ScrollView, TextInput} from 'react-native';
+import {View, Text, ScrollView, TextInput, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import SvgLogoImg from '../assets/images/logo.svg';
@@ -12,6 +12,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {fetchIdAndToken} from '../apiCalls/apiCalls';
 import {styles} from '../styles/ScreenStyle';
+import {UserData} from '../assets/constants/interface';
+import {getLoanData, setUser} from '../services/database';
 
 type PropsType = NativeStackScreenProps<RootStackParamList, 'RegisterScreen'>;
 
@@ -45,14 +47,35 @@ const RegisterScreen = ({navigation, route}: PropsType) => {
       isPasswordFieldCorrect &&
       isConfirmPasswordFieldCorrect
     ) {
-      handleIdAndTokenReceived();
+      const key = Date.now().toString();
+      const userData: UserData = {
+        email: email,
+        investorType: 'Retail',
+        name: '',
+        photo: '',
+        countryCode: 'MY',
+        password: password,
+        loginType: 'email',
+      };
+      signUp(key, userData);
     }
-    setEmail('');
-    setPassword('');
-    setOnceEmailFocused(false);
-    setOncePasswordFocused(false);
-    setConfirmPassword('');
-    setOnceConfirmPasswordFocused(false);
+  };
+
+  const showSignUpSuccessMessage = () => {
+    Alert.alert('Success', 'User signin successfully!', [
+      {
+        text: 'OK',
+        onPress: async () => {
+          navigation.navigate('WelcomeScreen');
+        },
+        style: 'default',
+      },
+    ]);
+  };
+
+  const signUp = (key: string, userData: UserData) => {
+    setUser(key, userData);
+    showSignUpSuccessMessage();
   };
 
   return (

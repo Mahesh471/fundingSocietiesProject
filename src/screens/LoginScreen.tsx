@@ -25,7 +25,8 @@ import {
   statusCodes,
 } from '@react-native-google-signin/google-signin';
 import {LoginContext} from '../components/Main';
-import {setUser} from '../firebase/database';
+import {getLoanData, setUser} from '../services/database';
+import {UserData} from '../assets/constants/interface';
 
 GoogleSignin.configure({
   webClientId:
@@ -59,9 +60,17 @@ const LoginScreen = ({navigation, route}: PropsType) => {
   const handleSignInPress = () => {
     if (isEmailFieldCorrect && isPasswordFieldCorrect) {
       setLoading(<ActivityLoader />);
-      handleTokenReceived();
-      setOnceEmailFocused(false);
-      setOncePasswordFocused(false);
+      const key = '3794593294324';
+      const userData: UserData = {
+        email: email,
+        investorType: 'Retail',
+        name: '',
+        photo: '',
+        countryCode: 'MY',
+        password: password,
+        loginType: 'email',
+      };
+      signIn(key, userData);
     }
   };
   const handleForgotPasswordPress = () => {
@@ -75,13 +84,23 @@ const LoginScreen = ({navigation, route}: PropsType) => {
 
   const {userInfo, setUserInfo, loggedIn, setLoggedIn} =
     useContext(LoginContext);
+
   const googleSignIn = async () => {
     setLoader(true);
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      setUserInfo({...userInfo, investorType: 'Retail'}); //'Qualified'
-      setLoggedIn(true);
+      const key = userInfo.user.id;
+      const userData: UserData = {
+        email: userInfo.user.email,
+        investorType: 'Retail',
+        name: userInfo.user.name || '',
+        photo: userInfo.user.photo || '',
+        countryCode: 'MY',
+        password: '',
+        loginType: 'SSO',
+      };
+      signIn(key, userData);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -93,24 +112,12 @@ const LoginScreen = ({navigation, route}: PropsType) => {
     setLoader(false);
   };
 
-  useEffect(() => {
-    if (loggedIn) {
-      const key = userInfo.user.id;
-      const userData = {
-        email: userInfo.user.email,
-        name: userInfo.user.name,
-        photo: userInfo.user.photo,
-        investorType: userInfo.investorType,
-      };
-      setUser(key, userData);
-    }
-  }, [userInfo, loggedIn]);
-
-  useEffect(() => {
-    if (loggedIn) {
-      navigation.navigate('MyTab');
-    }
-  }, [loggedIn]);
+  const signIn = (key: string, userData: UserData) => {
+    setUser(key, userData);
+    getLoanData();
+    navigation.navigate('MyTab');
+    console.log(JSON.stringify(userInfo));
+  };
 
   return (
     <LinearGradient

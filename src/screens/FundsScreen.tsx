@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 
 import FlatListItem from '../components/FlatListItem';
-import {getFundsData} from '../firebase/database';
+import {getFundsData} from '../services/database';
 import ActivityLoader from '../components/ActivityLoader';
 
 export interface FundsItemType {

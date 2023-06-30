@@ -21,7 +21,7 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="PortfolioScreen"
+      initialRouteName="AboutScreen"
       screenOptions={({route}) => ({
         headerStyle: {
           backgroundColor: '#00264D',
@@ -45,7 +45,7 @@ const TabNavigator = () => {
       <Tab.Screen
         name="AboutScreen"
         component={AboutScreen}
-        options={{title: 'About'}}
+        options={{title: 'Home'}}
       />
       <Tab.Screen
         name="PortfolioScreen"

@@ -28,15 +28,15 @@ const Data = [
           img: require('../images/gift.png'),
           border: false,
         },
+        // {
+        //   id: '1',
+        //   title: 'Change country',
+        //   text: 'Invest in Singapore,Malaysia and/or Indonesia',
+        //   img: require('../images/globe.png'),
+        //   border: false,
+        // },
         {
           id: '1',
-          title: 'Change country',
-          text: 'Invest in Singapore,Malaysia and/or Indonesia',
-          img: require('../images/globe.png'),
-          border: false,
-        },
-        {
-          id: '2',
           title: 'Logout',
           text: '',
           img: require('../images/logout.png'),
