@@ -4,9 +4,13 @@ import React, {Dispatch, SetStateAction, createContext, useState} from 'react';
 import StackNavigator from '../navigation/StackNavigator';
 import {User} from '@react-native-google-signin/google-signin';
 
+export interface UserType extends User {
+  investorType: string;
+}
+
 interface LoginContextType {
-  userInfo: User;
-  setUserInfo: Dispatch<SetStateAction<User>>;
+  userInfo: UserType;
+  setUserInfo: Dispatch<SetStateAction<UserType>>;
   loggedIn: boolean;
   setLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
@@ -16,7 +20,7 @@ export const LoginContext = createContext<LoginContextType>(
 );
 
 const Main = () => {
-  const [userInfo, setUserInfo] = useState<User>({} as User);
+  const [userInfo, setUserInfo] = useState<UserType>({} as UserType);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <LoginContext.Provider

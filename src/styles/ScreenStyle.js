@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import { SCREEN } from '../assets/constants/colorCodes';
 
 export const styles = {
   ForgotPasswordScreen: StyleSheet.create({
@@ -379,5 +380,18 @@ export const styles = {
       borderWidth: 2,
       borderColor: 'white',
     }
+  }),
+  CrowdfundingScreen: StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: SCREEN.BGCOLOR,
+      paddingHorizontal: '5%',
+    },
+    titleStyle: {
+      color: 'white',
+      fontSize: 15,
+      paddingBottom: 3,
+    },
+    bodyStyle: {},
   }),
 };

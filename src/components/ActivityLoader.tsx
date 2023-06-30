@@ -4,7 +4,7 @@ import {Modal} from 'react-native';
 
 const ActivityLoader = () => {
   return (
-    <Modal transparent={true}>
+    <Modal transparent={true} style={{backgroundColor: 'rgba(0,0,0,0.4)'}}>
       <AnimatedLottieView
         style={{
           opacity: 0.8,

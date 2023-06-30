@@ -16,8 +16,8 @@ import {RootStackParamList} from '../navigation/StackNavigator';
 import Data from '../assets/data/settingScreenData';
 import {styles} from '../styles/ScreenStyle';
 import ProfileCard from '../components/ProfileCard';
-import {GoogleSignin, User} from '@react-native-google-signin/google-signin';
-import {LoginContext} from '../components/Main';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {LoginContext, UserType} from '../components/Main';
 import ActivityLoader from '../components/ActivityLoader';
 
 type PropsType = NativeStackScreenProps<RootStackParamList>;
@@ -38,7 +38,7 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
       setLoggedIn(false);
-      setUserInfo({} as User);
+      setUserInfo({} as UserType);
     } catch (error) {
       console.error(error);
     }
@@ -62,6 +62,18 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
       },
     ]);
   };
+  const handleTermsOfUse = () => {
+    navigation.navigate('WebViewScreen', {
+      url: 'https://fundingsocieties.com/terms-of-use',
+      title: 'Terms of Use',
+    });
+  };
+  const handlePrivacyNotice = () => {
+    navigation.navigate('WebViewScreen', {
+      url: 'https://fundingsocieties.com/privacy-notice',
+      title: 'Privacy Notice',
+    });
+  };
 
   const handleReferFriendsPress = () => {
     navigation.navigate('ReferScreen');
@@ -78,10 +90,10 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
   };
 
   return (
-    <View style={styles.SettingScreen.container}>
+    <View style={[styles.SettingScreen.container]}>
       {loader && <ActivityLoader />}
       <ScrollView>
-        <ProfileCard>
+        {/* <ProfileCard>
           <View
             style={{
               alignSelf: 'center',
@@ -117,7 +129,7 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
               </TouchableOpacity>
             </View>
           </View>
-        </ProfileCard>
+        </ProfileCard> */}
         <SectionList
           sections={Data}
           scrollEnabled={false}
@@ -146,6 +158,10 @@ const SettingsScreen = ({navigation, route}: PropsType) => {
                     ? handleLogoutPress()
                     : item.title == 'Refer Friends'
                     ? handleReferFriendsPress()
+                    : item.title == 'Terms of Use'
+                    ? handleTermsOfUse()
+                    : item.title == 'Privacy Notice'
+                    ? handlePrivacyNotice()
                     : null
                 }>
                 <Image style={styles.SettingScreen.img} source={item.img} />

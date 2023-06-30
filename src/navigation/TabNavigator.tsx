@@ -2,15 +2,16 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 
 import TabBarIcon from '../components/TabBarIcon';
-import DummyScreen from '../screens/DummyScreen';
+import AboutScreen from '../screens/AboutScreen';
 import FundsScreen from '../screens/FundsScreen';
 import SettingScreen from '../screens/SettingScreen';
 import PortfolioScreen from '../screens/PortfolioScreen';
+import CrowdfundingScreen from '../screens/CrowdfundingScreen';
 
 type RootTabParamList = {
-  DummyScreen1: undefined;
+  AboutScreen: undefined;
   PortfolioScreen: undefined;
-  DummyScreen3: undefined;
+  CrowdfundingScreen: undefined;
   FundsScreen: undefined;
   SettingScreen: undefined | {email: string; dob: string; fileResponse: string};
 };
@@ -20,7 +21,7 @@ const Tab = createBottomTabNavigator<RootTabParamList>();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      initialRouteName="PortfolioScreen"
+      initialRouteName="AboutScreen"
       screenOptions={({route}) => ({
         headerStyle: {
           backgroundColor: '#00264D',
@@ -42,9 +43,9 @@ const TabNavigator = () => {
         tabBarShowLabel: false,
       })}>
       <Tab.Screen
-        name="DummyScreen1"
-        component={DummyScreen}
-        options={{title: 'Dummy1'}}
+        name="AboutScreen"
+        component={AboutScreen}
+        options={{title: 'Home'}}
       />
       <Tab.Screen
         name="PortfolioScreen"
@@ -52,9 +53,9 @@ const TabNavigator = () => {
         options={{title: 'Portfolio'}}
       />
       <Tab.Screen
-        name="DummyScreen3"
-        component={DummyScreen}
-        options={{title: 'Dummy3'}}
+        name="CrowdfundingScreen"
+        component={CrowdfundingScreen}
+        options={{title: 'Funding'}}
       />
       <Tab.Screen
         name="FundsScreen"
@@ -64,7 +65,7 @@ const TabNavigator = () => {
       <Tab.Screen
         name="SettingScreen"
         component={SettingScreen}
-        options={{title: 'Settings'}}
+        options={{title: 'Settings', headerShown: true}}
       />
     </Tab.Navigator>
   );

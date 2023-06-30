@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  Image,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -102,8 +101,6 @@ const LoginScreen = ({navigation, route}: PropsType) => {
         loginType: 'SSO',
       };
       signIn(key, userData);
-      // setUserInfo(userInfo);
-      // setLoggedIn(true);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -121,11 +118,6 @@ const LoginScreen = ({navigation, route}: PropsType) => {
     navigation.navigate('MyTab');
     console.log(JSON.stringify(userInfo));
   };
-
-  useEffect(() => {
-    if (loggedIn) {
-    }
-  }, [userInfo, loggedIn]);
 
   return (
     <LinearGradient
